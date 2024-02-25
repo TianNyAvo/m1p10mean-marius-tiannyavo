@@ -6,7 +6,7 @@ exports.insertCustomer = async (customer) => {
     const result = await collection.insertOne(customer);
     console.log('Inserted customer:', result);
     client.close();
-    return result.ops.first;
+    return result.ops[0];
     
 };
 
@@ -24,6 +24,15 @@ exports.getCustomers = async (req) => {
     return result;
 };
 
+exports.getUserById = async (user) => {
+    const {db, client} = await dbServices.connectToDatabase();
+    const collection = db.collection('customers');
+    const result = await collection.findOne({ _id: new mongodb.ObjectId(user._id) });
+    console.log('Found customer:', result);
+    client.close();
+    return result;
+};
+
 exports.updateCustomer = async (customer) => {
     const {db, client} = await dbServices.connectToDatabase();
     console.log('Updating customer:', customer);
@@ -34,8 +43,14 @@ exports.updateCustomer = async (customer) => {
         },
         { 
             $set: {
-                nom: customer.nom,
-                prenom: customer.prenom
+                role_id: customer.role_id,
+                name: customer.name,
+                email: customer.email,
+                mdp: customer.mdp,
+                naissance: customer.naissance,
+                create_date: customer.create_date,
+                debut_horaire: customer.debut_horaire,
+                fin_horaire: customer.fin_horaire
             }
         },
         {
@@ -55,4 +70,36 @@ exports.deleteCustomer = async (customer) => {
     const result = await collection.deleteOne({ _id: new mongodb.ObjectId(customer._id) });
     client.close();
     return result;
+};
+
+exports.loginCustomer = async (customer) => {
+    const {db, client} = await dbServices.connectToDatabase();
+    const collection = db.collection('customers');
+    console.log('Logging in customer:', customer);
+    try {
+        const result = await collection.findOne({ email: customer.email});
+        if (result) {
+            if (result.mdp === customer.mdp) {
+                console.log('Logged in customer:', result);
+                client.close();
+                return result;
+            }
+        
+            else {
+                console.log('Incorrect email or password');
+                client.close();
+                return  'Incorrect password';
+            }
+        }
+        else {
+            console.log('Incorrect email or password');
+            client.close();
+            return 'Incorrect email or password';
+        }
+    } catch (error) {
+        console.error('Error logging in customer:', error);
+        client.close();
+        throw error;
+    }
+
 };

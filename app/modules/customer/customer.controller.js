@@ -21,6 +21,17 @@ exports.getCustomers = async (req, res) => {
     }
 }
 
+exports.getUserById = async (req, res) => {
+    try {
+        const user = req.body;
+        const result = await customerServices.getUserById(user);
+        res.status(200).json(result);
+    } catch (error) {
+        console.error('Error getting user by id:', error);
+        res.status(500).json({ error: error });
+    }
+};
+
 exports.updateCustomer = async (req, res) => {
     try {
         const customer = req.body;
@@ -28,6 +39,28 @@ exports.updateCustomer = async (req, res) => {
         res.status(200).json(result);
     } catch (error) {
         console.error('Error updating customer:', error);
+        res.status(500).json({ error: error });
+    }
+}
+
+exports.deleteCustomer = async (req, res) => {
+    try {
+        const customer = req.body;
+        const result = await customerServices.deleteCustomer(customer);
+        res.status(200).json(result);
+    } catch (error) {
+        console.error('Error deleting customer:', error);
+        res.status(500).json({ error: error });
+    }
+}
+
+exports.loginCustomer = async (req, res) => {
+    try {
+        const customer = req.body;
+        const result = await customerServices.loginCustomer(customer);
+        res.status(200).json(result);
+    } catch (error) {
+        console.error('Error logging in customer:', error);
         res.status(500).json({ error: error });
     }
 }

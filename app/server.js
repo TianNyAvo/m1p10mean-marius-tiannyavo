@@ -29,9 +29,19 @@ app.get('/customers', function (req, res) {
     customerController.getCustomers(req, res);
 });
 
+app.get('/user', function (req, res) {
+    console.log('get user');
+    customerController.getUserById(req, res);
+});
+
 app.post('/customer/update', function (req, res) {
     console.log('update customer');
     customerController.updateCustomer(req, res);
+});
+
+app.post('/user/login', function (req, res) {
+    console.log('login customer');
+    customerController.loginCustomer(req, res);
 });
 
 /* MongoClient.connect("mongodb://localhost:27017", {
