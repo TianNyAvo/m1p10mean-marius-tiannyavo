@@ -32,6 +32,16 @@ exports.getUserById = async (req, res) => {
     }
 };
 
+exports.getEmployeList = async (req, res) => {
+    try {
+        const result = await customerServices.getEmployeList(req);
+        res.status(200).json(result);
+    } catch (error) {
+        console.error('Error getting employe list:', error);
+        res.status(500).json({ error: error });
+    }
+};
+
 exports.updateCustomer = async (req, res) => {
     try {
         const customer = req.body;

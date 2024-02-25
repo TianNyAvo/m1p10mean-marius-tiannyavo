@@ -33,6 +33,19 @@ exports.getUserById = async (user) => {
     return result;
 };
 
+exports.getEmployeList = async (req) => {
+    const page = parseInt(req.query.page) || 1; // Default to page 1 if not provided
+    const pageSize = parseInt(req.query.pageSize) || 10; // Default to 10 items per page if not provided
+    const skip = (page - 1) * pageSize;
+
+    const {db, client} = await dbServices.connectToDatabase();
+    const collection = db.collection('customers');
+    const result = await collection.find({ role_id: "65db14c425c95f8472ad1ec9" })/* .skip(skip).limit(pageSize) */.toArray();
+    console.log('Found employe:', result);
+    client.close();
+    return result;
+};
+
 exports.updateCustomer = async (customer) => {
     const {db, client} = await dbServices.connectToDatabase();
     console.log('Updating customer:', customer);
