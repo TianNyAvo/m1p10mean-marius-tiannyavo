@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
 const mongodb = require('mongodb');
 const databaseServices = require('./modules/database/database.service');
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+app.use(cors());
 
 app.listen(3000, function () {
     console.log('listening on 3000');
