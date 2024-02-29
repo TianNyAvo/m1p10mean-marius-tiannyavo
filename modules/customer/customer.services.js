@@ -41,7 +41,7 @@ const customerSchema = new Schema({
 
 const Customer = mongoose.model('customers', customerSchema);
 
-module.exports = Customer;
+// module.exports = Customer;
 
 exports.insertCustomer = async (customer) => {
     const {db, client} = await dbServices.connectToDatabase();
