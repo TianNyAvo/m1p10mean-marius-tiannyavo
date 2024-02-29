@@ -28,6 +28,8 @@ app.listen(3000, function () {
     console.log('listening on 3000');
 });
 
+app.use(express.json());
+
 // user
 app.post('/user/create', function (req, res) {
     console.log('insert customer');
