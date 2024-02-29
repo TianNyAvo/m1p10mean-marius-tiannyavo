@@ -1,0 +1,21 @@
+{
+  "name": "m1p10mean-Marius-TianNyAvo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "author": "TianNyAvo",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.11.15"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
