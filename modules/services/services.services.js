@@ -30,7 +30,7 @@ const serviceSchema = new Schema({
 
 const Service = mongoose.model('services', serviceSchema);
 
-module.exports = Service;
+// module.exports = Service;
 
 exports.insertService = async (serv) => {
   const {db, client} = await dbServices.connectToDatabase();
