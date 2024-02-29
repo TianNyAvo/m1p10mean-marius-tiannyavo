@@ -21,6 +21,8 @@ databaseServices.createAppointmentView();
 databaseServices.createempAvgView();
 
 app.use(cors());
+app.options('*', cors());
+
 
 app.listen(3000, function () {
     console.log('listening on 3000');
