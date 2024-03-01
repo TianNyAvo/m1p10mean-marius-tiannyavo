@@ -23,7 +23,7 @@ exports.getCustomers = async (req, res) => {
 
 exports.getUserById = async (req, res) => {
     try {
-        const user = req.body;
+        const user = req.query;
         const result = await customerServices.getUserById(user);
         res.status(200).json(result);
     } catch (error) {

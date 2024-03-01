@@ -13,7 +13,7 @@ exports.insertDetail = async (req, res) => {
 
 exports.getDetailListAppointmentId = async (req, res) => {
   try {
-    const id = req.body;
+    const id = req.query;
       const result = await detailsService.getDetailListAppointmentId(id);
       res.status(200).json(result);
   } catch (error) {
@@ -24,7 +24,7 @@ exports.getDetailListAppointmentId = async (req, res) => {
 
 exports.getDetailListEmployeId = async (req, res) => {
   try {
-    const id = req.body;
+    const id = req.query;
       const result = await detailsService.getDetailListEmployeId(id);
       res.status(200).json(result);
   } catch (error) {

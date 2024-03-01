@@ -23,7 +23,7 @@ exports.listAppointments = async (req, res) => {
 
 exports.getAppointmentById = async (req, res) => {
   try {
-      const rdv = req.body;
+      const rdv = req.query;
       const result = await appointmentService.getAppointmentById(rdv);
       res.status(200).json(result);
   } catch (error) {
@@ -34,7 +34,7 @@ exports.getAppointmentById = async (req, res) => {
 
 exports.getAppointmentsByUserId = async (req, res) => {
   try {
-      const user = req.body;
+      const user = req.query;
       const result = await appointmentService.getAppointmentsByUserId(user);
       res.status(200).json(result);
   } catch (error) {

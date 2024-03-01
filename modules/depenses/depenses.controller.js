@@ -23,7 +23,7 @@ exports.getDepenseList = async (req, res) => {
 
 exports.getDepenseById = async (req, res) => {
   try {
-      const depense = req.body;
+      const depense = req.query;
       const result = await depenseService.getDepenseById(depense);
       res.status(200).json(result);
   } catch (error) {

@@ -65,6 +65,7 @@ exports.getDepenseList = async () => {
 
 exports.getDepenseById = async (depense) => {
   const id = depense._id
+  console.log('get depense id:', id);
   try {
     const dep = await Depense.findById(id);
     return dep;

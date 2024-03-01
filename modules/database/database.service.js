@@ -264,6 +264,7 @@ exports.getCA = async () => {
 };
 
 exports.getCAJour = async (month) => {
+  console.log('Ca par jour pour mois ',month)
     const mois = month.month;
     const client = await MongoClient.connect("mongodb+srv://tandriatoavina:mongopass1623@tiancluster.1h72rz3.mongodb.net/salon?retryWrites=true&w=majority&appName=TianCluster", {
             useUnifiedTopology: true

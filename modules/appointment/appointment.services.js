@@ -68,6 +68,7 @@ exports.getAppointmentList = async (req) => {
 };
 
 exports.getAppointmentById = async (rdv) => {
+  console.log("appointment id:" + rdv._id);
     try {
       const appointment = await Appointment.findById(rdv._id).populate('id_user', 'name');
       return appointment;
@@ -79,6 +80,7 @@ exports.getAppointmentById = async (rdv) => {
 
 exports.getAppointmentsByUserId = async (userId) => {
     const id = userId.id_user
+    console.log("get appointment user id:" + id);
     try {
       const appointments = await Appointment.find({ id_user: id })
         .populate('id_user', 'name')

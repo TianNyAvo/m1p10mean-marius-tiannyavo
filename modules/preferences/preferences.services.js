@@ -26,8 +26,8 @@ exports.listPreferences = async (req) => {
   // const pageSize = parseInt(req.query.pageSize) || 10; // Default to 10 items per page if not provided
   // const skip = (page - 1) * pageSize;
 
-  const user_id = req.body.user_id;
-  console.log('user_id:', user_id);
+  const user_id = req.query.user_id;
+  console.log('list preference by user_id:', user_id);
 
   const {db, client} = await dbServices.connectToDatabase();
   const collection = db.collection('preferences');
@@ -77,6 +77,7 @@ exports.listPreferences = async (req) => {
 
 exports.getPreferenceById = async (pref) => {
   const _id = pref._id;
+  console.log('Getting preference:', _id);
   const {db, client} = await dbServices.connectToDatabase();
   const collection = db.collection('preferences');
   try {

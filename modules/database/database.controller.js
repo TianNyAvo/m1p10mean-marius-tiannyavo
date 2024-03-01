@@ -2,7 +2,7 @@ var databaseServices = require('./database.service');
 
 exports.getCA = async (req, res) => {
   try {
-    const result = await databaseServices.getCA(req);
+    const result = await databaseServices.getCA();
     res.status(200).json(result);
   } catch (error) {
     console.error('Error getting CA:', error);
@@ -12,7 +12,7 @@ exports.getCA = async (req, res) => {
 
 exports.getCAJour = async (req, res) => {
   try {
-    const result = await databaseServices.getCAJour(req.body);
+    const result = await databaseServices.getCAJour(req.query);
     res.status(200).json(result);
   } catch (error) {
     console.error('Error getting CA by month:', error);
@@ -22,7 +22,7 @@ exports.getCAJour = async (req, res) => {
 
 exports.getEmpAvg = async (req, res) => {
   try {
-    const result = await databaseServices.getEmpAvg(req);
+    const result = await databaseServices.getEmpAvg();
     res.status(200).json(result);
   } catch (error) {
     console.error('Error getting employe average:', error);

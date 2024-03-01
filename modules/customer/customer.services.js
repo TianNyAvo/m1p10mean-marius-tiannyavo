@@ -78,6 +78,7 @@ exports.getCustomers = async (req) => {
 };
 
 exports.getUserById = async (user) => {
+    console.log('Getting customer:', user._id)
     const {db, client} = await dbServices.connectToDatabase();
     const collection = db.collection('customers');
     try {

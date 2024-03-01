@@ -86,6 +86,7 @@ exports.insertDetail = async (req) => {
 
 exports.getDetailListAppointmentId = async (req) => {
     const id = req.id_appointment;
+    console.log('get detail for appointment id:', id);
     const {db, client} = await dbServices.connectToDatabase();
     try {
       const details = await Detail.find({ id_appointment: id }).populate('id_employe', 'name').populate('id_service', 'name');
@@ -101,6 +102,7 @@ exports.getDetailListAppointmentId = async (req) => {
 
 exports.getDetailListEmployeId = async (req) => {
   const id = req.id_employe;
+  console.log('get detail for employe id:', id);
   const {db, client} = await dbServices.connectToDatabase();
   try {
     const details = await Detail.find({ id_employe: id }).populate('id_employe', 'name').populate('id_service', 'name').populate('id_offre', 'name');

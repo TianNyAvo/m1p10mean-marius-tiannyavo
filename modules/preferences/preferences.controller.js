@@ -23,7 +23,7 @@ exports.listPreferences = async (req, res) => {
 
 exports.getPreferenceById = async (req, res) => {
   try {
-      const pref = req.body;
+      const pref = req.query;
       const result = await preferencesService.getPreferenceById(pref);
       res.status(200).json(result);
   } catch (error) {
